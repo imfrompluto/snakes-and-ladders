@@ -1,0 +1,66 @@
+/* font-family: 'Montserrat', sans-serif; */
+/* font-family: 'Poppins', sans-serif; */
+
+*{
+    padding: 0;
+    margin: 0;
+   
+}
+
+body{
+    background-color: rgb(254, 236, 225);
+}
+
+h1{
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.container{
+    width: 90%;
+    /* background-color: aqua; */
+    margin: auto;
+    max-width: 1000px;
+}
+
+h3{
+    font-family: 'Montserrat', sans-serif;
+}
+
+h4{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#dice{
+    width: 50px;
+    display: block;
+    padding: 10px 0;
+}
+
+#game div{
+    width: 30px;
+    height: 30px;
+    background-color:rgb(243, 166, 203);
+    border-radius: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 17px;
+    transform: translate(-30px,30px);
+    transition: 0.8s;
+}
+
+#game #bot{
+    background-color: rgb(171, 171, 255);
+}
+
+#game{
+    position: relative;
+    background-color: aqua;
+    display: inline-block;
+
+}
+
+#dice{
+    transition: 2s;
+    transition-timing-function: ease-out;
+}
