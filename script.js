@@ -7,12 +7,14 @@ let botplaying = false
 let botsteps = 0
 let diceroll = 1
 let bot = document.getElementById("bot")
+let victory = document.getElementById("victory")
 let maps = [
     "snakes n ladders2.png",
     "snakes0.png",
 ]
 map.src = maps[Math.floor(Math.random()*2)]
 function movecharacter() {
+    console.log(steps);
     if (!botplaying) {
         if (steps.toString().length == 1) {
             character.style.left = steps.toString() * 10 + "%"
@@ -74,21 +76,24 @@ dice.onclick = function () {
         if (!botplaying) {
             let currentsteps = 0
            let currentinterval = setInterval(() => {
-                steps = steps + 1
-                currentsteps = currentsteps + 1
-                if (currentsteps == diceroll){
-                    botplaying = !botplaying
-                    if (botplaying) {
-
-                        // change the html
-                        document.getElementById("player").innerHTML = "player: bot"
-            
+               console.log(steps);
+               if (currentsteps == diceroll){
+                   botplaying = !botplaying
+                   if (botplaying) {
+                       
+                       // change the html
+                       document.getElementById("player").innerHTML = "player: bot"
+                       
                     }
                     else {
                         document.getElementById("player").innerHTML = "player: human"
                     }
                     clearInterval(currentinterval)
                 }
+                else{
+                    steps = steps + 1
+                }
+                currentsteps = currentsteps + 1 
                 movecharacter()
             },800);
             // steps = steps + diceroll
@@ -162,75 +167,78 @@ dice.onclick = function () {
             // }
         }
         else {
-            botsteps = botsteps + diceroll
-            if (map.src.includes("snakes0")) {
-                if (botsteps == 5) {
-                    botsteps = 26
-                }
-                else if (botsteps == 8) {
-                    botsteps = 49
-                }
-                else if (botsteps == 19) {
-                    botsteps = 38
-                }
-                else if (botsteps == 24) {
-                    botsteps = 56
-                }
-                else if (botsteps == 52) {
-                    botsteps = 71
-                }
-                else if (botsteps == 53) {
-                    botsteps = 84
-                }
-                else if (botsteps == 60) {
-                    botsteps = 81
-                }
-                else if (botsteps == 42) {
-                    botsteps = 15
-                }
-                else if (botsteps == 54) {
-                    botsteps = 33
-                }
-                else if (botsteps == 77) {
-                    botsteps = 41
-                }
-                else if (botsteps == 69) {
-                    botsteps = 47
-                }
-                else if (botsteps == 94) {
-                    botsteps = 72
-                }
-                else if (botsteps == 95) {
-                    botsteps = 81
-                }
-            }
-            else if (map.src.includes("ladders")) {
-                console.log("snakes and ladders")
-                if (botsteps == 16) {
-                    botsteps = 41
-                }
-                else if (botsteps == 32) {
-                    botsteps = 52
-                }
-                else if (botsteps == 56) {
-                    botsteps = 95
-                }
-                else if (botsteps == 33) {
-                    botsteps = 12
-                }
-                else if (botsteps == 44) {
-                    botsteps = 37
-                }
-                else if (botsteps == 72) {
-                    botsteps = 49
-                }
-                else if (botsteps == 93) {
-                    botsteps = 62
-                }
-            }
-            if (botsteps > 99) {
-                botsteps = 99
-            }
+            botplaying = false
+
+            // botsteps = botsteps + diceroll
+            // if (map.src.includes("snakes0")) {
+            //     if (botsteps == 5) {
+            //         botsteps = 26
+            //     }
+            //     else if (botsteps == 8) {
+            //         botsteps = 49
+            //     }
+            //     else if (botsteps == 19) {
+            //         botsteps = 38
+            //     }
+            //     else if (botsteps == 24) {
+            //         botsteps = 56
+            //     }
+            //     else if (botsteps == 52) {
+            //         botsteps = 71
+            //     }
+            //     else if (botsteps == 53) {
+            //         botsteps = 84
+            //     }
+            //     else if (botsteps == 60) {
+            //         botsteps = 81
+            //     }
+            //     else if (botsteps == 42) {
+            //         botsteps = 15
+            //     }
+            //     else if (botsteps == 54) {
+            //         botsteps = 33
+            //     }
+            //     else if (botsteps == 77) {
+            //         botsteps = 41
+            //     }
+            //     else if (botsteps == 69) {
+            //         botsteps = 47
+            //     }
+            //     else if (botsteps == 94) {
+            //         botsteps = 72
+            //     }
+            //     else if (botsteps == 95) {
+            //         botsteps = 81
+            //     }
+            // }
+            // else if (map.src.includes("ladders")) {
+            //     console.log("snakes and ladders")
+            //     if (botsteps == 16) {
+            //         botsteps = 41
+            //     }
+            //     else if (botsteps == 32) {
+            //         botsteps = 52
+            //     }
+            //     else if (botsteps == 56) {
+            //         botsteps = 95
+            //     }
+            //     else if (botsteps == 33) {
+            //         botsteps = 12
+            //     }
+            //     else if (botsteps == 44) {
+            //         botsteps = 37
+            //     }
+            //     else if (botsteps == 72) {
+            //         botsteps = 49
+            //     }
+            //     else if (botsteps == 93) {
+            //         botsteps = 62
+            //     }
+            // }
+            // if (botsteps > 99) {
+            //     botsteps = 99
+            //     victory.style.opacity = 1
+            // }
         }
 
         // movecharacter()

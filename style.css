@@ -72,3 +72,11 @@ h4{
     transition: 2s;
     transition-timing-function: ease-out;
 }
+
+h2{
+    opacity: 0;
+    width: 100%;
+    font-size: larger;
+    color: red;
+    text-align: center;
+}
