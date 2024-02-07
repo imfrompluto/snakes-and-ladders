@@ -44,9 +44,9 @@ h4{
     border-radius: 30px;
     position: absolute;
     bottom: 0%;
-    /* left: 17px; */
+    left: 0;
     transform: translate(50%,-50%);
-    transition: 0.8s;
+    transition: 0.3s;
 
 }
 
@@ -60,7 +60,6 @@ h4{
     width: 100%;
     max-width: 600px;
     display: inline-block;
-
 }
 
 #map{
@@ -79,4 +78,19 @@ h2{
     font-size: larger;
     color: red;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+button{
+    color: brown;
+    background-color: rgb(211, 79, 79);
+    border-radius: 6px;
+    width: 100px;
+    font-size: large;
+    border: solid rgb(211, 79, 79) 12px;
+}
+
+#gamecont{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
