@@ -10,6 +10,8 @@ let bot = document.getElementById("bot")
 let victory = document.getElementById("victory")
 let diceinterval
 let currentinterval
+let button = document.getElementById("button")
+// fuction calls from html. needed when the try again button is pressed and reset the game
 function again(){
     steps = 0
     botsteps = 0
@@ -23,26 +25,33 @@ function again(){
     clearInterval(currentinterval)
     botplaying = false
     document.getElementById("player").innerHTML = "player: human"
+    button.style.opacity = 0
 }
 // Array
 let maps = [
     "snakes n ladders2.png",
     "snakes0.png",
 ]
+button.style.opacity = 0
 map.src = maps[Math.floor(Math.random() * 2)]
 function movecharacter() {
     console.log(steps);
     if (!botplaying) {
+        // if the player is on the first row of the board (1 number numbers)
         if (steps.toString().length == 1) {
-            character.style.left = steps.toString() * 10 + "%"
+
+            character.style.left = steps* 10 + "%"
         }
         else {
+            // if the player is on an even row
             if (Math.floor(steps / 10) % 2 == 0) {
+                // needed for the player to move from the left to wherever he needs. toString()[1] is needed to take out the secon digit of the number
                 character.style.left = steps.toString()[1] * 10 + "%"
                 character.style.bottom = (Math.floor(steps / 10)) * 10 + "%"
 
             }
             else {
+                // 9 - because the player is coming frpm the other side (odd row)
                 character.style.left = (9 - steps.toString()[1]) * 10 + "%"
                 character.style.bottom = (Math.floor(steps / 10)) * 10 + "%"
             }
@@ -77,26 +86,32 @@ dice.onclick = function () {
     dice.style.transform = "rotate(" + degrees + "deg)"
 
 
-
+    // without the interval the dice wont change pictures when rotating
         diceinterval = setInterval(() => {
         console.log("dice");
         diceroll = Math.floor(Math.random() * 6 + 1)
-
         // dice images could change
         dice.src = "dice" + diceroll + ".png"
-
     }, 100);
+    // to wait until the dice stops rotating
     setTimeout(() => {
         // stops the repeated execution
         clearInterval(diceinterval)
         console.log(map.src)
         if (!botplaying) {
+            // how many steps the player made after the dice roll
             let currentsteps = 0
+            // needed for the player to go one step at a time
             currentinterval = setInterval(() => {
                 console.log(steps);
+                // if the needed amount of steps were completed
                 if (currentsteps == diceroll) {
                     clearInterval(currentinterval)
+                    // to allow the user to press on the dice again 
                     dice.style.pointerEvents = "auto"
+
+                    // the start of the different chances when the player steps onto a snake or ladder
+
                     if (map.src.includes("snakes0")) {
                         if (steps == 5) {
                             steps = 26
@@ -137,6 +152,7 @@ dice.onclick = function () {
                         else if (steps == 95) {
                             steps = 81
                         }
+                        // to allow the character to move around the board
                         movecharacter()
                         botplaying = true
                     }
@@ -175,6 +191,7 @@ dice.onclick = function () {
                         victory.style.opacity = 1
                         dice.style.pointerEvents = "none"
                         victory.innerHTML = "victory!"
+                        button.style.opacity = 1
                     }
                     movecharacter()
                 }
@@ -277,6 +294,7 @@ dice.onclick = function () {
                         victory.style.opacity = 1
                         document.getElementById("victory").innerHTML = "you lost!"
                         dice.style.pointerEvents = "none"
+                        button.style.opacity = 1
                     }
                     movecharacter()
                 }
